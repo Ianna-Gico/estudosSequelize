@@ -1,6 +1,27 @@
 const {Usuario, Comentario, Post, sequelize} = require('./models');
 const { Op } = require('sequelize');
 
+
+
+
+
+Usuario.findByPk(1, { include:[ "curtiu" ]})
+    .then( Post => {
+            console.log(Post.toJSON());
+            sequelize.close();
+        }
+    )
+
+
+Post.findByPk(1, { include:[ "curtiu" ]})
+    .then( Post => {
+            console.log(Post.toJSON());
+            sequelize.close();
+        }
+    )
+
+
+
 Post.findByPk(1, { include:[ 'comentario' ]})
     .then( Post => {
             console.log(Post.toJSON());
@@ -8,7 +29,7 @@ Post.findByPk(1, { include:[ 'comentario' ]})
         }
     )
 
-/*Usuario.findByPk(1, {
+Usuario.findByPk(1, {
     include:[ 'posts' ]})
     .then(
         usuario => {
